@@ -32,7 +32,7 @@ class ExercisesController < ApplicationController
     # Pour utiliser les jointures.
     # Renvoyer le montant total de l'argent lors de l'appel à foods_price_sum sur l'instance de client récupérée.
     @customer = Customer
-      .joins("orders: :foods")
+      .joins(orders: :foods)
       .select("customers.*, SUM(foods.price) AS foods_price_sum")
       .group("customers.id")
       .order("foods_price_sum DESC")
